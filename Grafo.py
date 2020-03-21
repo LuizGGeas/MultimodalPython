@@ -1,20 +1,20 @@
-import Aresta
+from Content import Content
 
 class Grafo:
     grafo = []
 
-    def __init__(self, tam:int, arestas:Aresta):
-        grafo = [[(0,0)]*tam]*tam
+    def __init__(self, tam:int, arestas:list):
+        grafo = [[Content()]*tam]*tam
         
         for i in grafo:
             for j in i:
                 if i != j:
-                    j = (-1, -1)
+                    j.value = -1
         
         for i in arestas:
-            grafo[i[0]][i[1]] = (i[2], i[3])
+            grafo[i.v1][i.v2].value, grafo[i.v1][i.v2].transp = i.value, i.transp
         
-        self.matriz = grafo
+        self.grafo = grafo
 
     def getGrafo(self):
         return self.grafo
