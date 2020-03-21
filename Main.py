@@ -54,5 +54,5 @@ f = open('matrix.txt','w')
 for line in gr.grafo:
     for i in line:
         f.write(f'{i} ')
-    f.write("")
+    f.write('\n')
 f.close()
