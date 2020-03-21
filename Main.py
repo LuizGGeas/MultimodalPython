@@ -50,8 +50,9 @@ arestas.append(aresta(21,19,16,tr(4)))
 gr = Grafo(27, arestas)
 
 
-with open('matrix.txt','w') as f:
-    for line in gr.grafo:
-        for i in line:
-            f.write(f'{i} ')
-        f.write("")
+f = open('matrix.txt','w')
+for line in gr.grafo:
+    for i in line:
+        f.write(f'{i} ')
+    f.write("")
+f.close()
