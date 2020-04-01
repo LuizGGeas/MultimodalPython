@@ -2,20 +2,20 @@ import random
 from Transportes import Transportes as tr
 
 class Caminho:
-    caminho:list
-    trocas:list
+    caminho:list = []
+    trocas:list = []
     fitness = 0
     numtrocas = 0
 
-    def __init__(self, grafo:(int, int), caminho:list=[], start:int = 0, end:int = 26):
+    def __init__(self, grafo, caminho:list=[], start:int = 0, end:int = 26):
         if not caminho:
             caminho.append(start)
             i = start
             while(i != end):
                 poss = []
-                for j in range(grafo[i]):
-                    if j[0] >0:
-                        poss.append(grafo[i].index(j))
+                for j in range(len(grafo[i])):
+                    if grafo[i][j].value > 0:
+                        poss.append(j)
                 if poss:
                     i = random.choice(poss)
                     caminho.append(i)
@@ -27,12 +27,12 @@ class Caminho:
         
     def setFitness(self, grafo: (int, int)):
         for i in range(len(self.caminho)-1):
-            self.fitness += grafo[self.caminho[i]][self.caminho[i+1]][1]
+            self.fitness += grafo[self.caminho[i]][self.caminho[i+1]].value
 
-    def setTrocas(self, grafo:(int, int)):
+    def setTrocas(self, grafo):
         for i in range(len(self.caminho)-1):
-            self.trocas.append(grafo[self.caminho[i]][self.caminho[i+1]][1])
-        self.setNumTrocas
+            self.trocas.append(grafo[self.caminho[i]][self.caminho[i+1]].transp)
+        self.setNumTrocas()
 
     def setNumTrocas(self):
         for i in range(len(self.trocas)):
