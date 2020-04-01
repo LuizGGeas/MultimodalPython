@@ -53,10 +53,16 @@ gr = Grafo(27, arestas)
 f = open('matrix.txt', 'w')
 
 
-
 for i in gr.grafo:
     for j in i:
         f.write(f'{j} ')
     f.write('\n')
+f.close()
 
 path = c(grafo = gr.grafo).caminho
+
+gen = g.mutacao(path, gr.grafo)
+
+gen = c(gr.grafo, gen)
+
+print(gen.caminho)
