@@ -4,7 +4,7 @@ class Content:
     value: int
     transp:tr
 
-    def __init__(self, value:int=0, transp:tr = None):
+    def __init__(self, value:int=-1, transp:tr =tr(-1)):
         self.transp = transp
         self.value = value
     def __str__(self):

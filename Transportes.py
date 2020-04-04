@@ -7,3 +7,4 @@ class Transportes(Enum):
     Privado = auto()
     Trem = auto()
     Transferencia = auto()
+    No = -1

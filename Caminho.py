@@ -1,21 +1,22 @@
 import random
 from Transportes import Transportes as tr
+from Grafo import Grafo as gr 
 
 class Caminho:
-    caminho:list
-    trocas:list
+    caminho:list = []
+    trocas:list = []
     fitness = 0
     numtrocas = 0
 
-    def __init__(self, grafo:(int, int), caminho:list=[], start:int = 0, end:int = 26):
+    def __init__(self, grafo:gr.grafo, caminho:list=[], start:int = 0, end:int = 26):
         if not caminho:
             caminho.append(start)
             i = start
             while(i != end):
                 poss = []
-                for j in range(grafo[i]):
-                    if j[0] >0:
-                        poss.append(grafo[i].index(j))
+                for j in range(len(grafo[i])):
+                    if grafo[i][j].value > 0:
+                        poss.append(j)
                 if poss:
                     i = random.choice(poss)
                     caminho.append(i)
@@ -25,14 +26,14 @@ class Caminho:
         self.setFitness(grafo)
         self.setTrocas(grafo)
         
-    def setFitness(self, grafo: (int, int)):
+    def setFitness(self, grafo: gr.grafo):
         for i in range(len(self.caminho)-1):
-            self.fitness += grafo[self.caminho[i]][self.caminho[i+1]][1]
+            self.fitness += grafo[self.caminho[i]][self.caminho[i+1]].value
 
-    def setTrocas(self, grafo:(int, int)):
+    def setTrocas(self, grafo:gr.grafo):
         for i in range(len(self.caminho)-1):
-            self.trocas.append(grafo[self.caminho[i]][self.caminho[i+1]][1])
-        self.setNumTrocas
+            self.trocas.append(grafo[self.caminho[i]][self.caminho[i+1]].transp)
+        self.setNumTrocas()
 
     def setNumTrocas(self):
         for i in range(len(self.trocas)):
@@ -44,7 +45,7 @@ class Caminho:
                     if self.trocas[i-1] == self.trocas[i+1]:
                         self.numtrocas-=1
     
-    def validacao(self, grafo:(int, int), end:int) -> bool :
+    def validacao(self, grafo: gr.grafo, end:int) -> bool :
         for i in len(self.caminho)-1:
             if grafo[self.caminho[i]][self.caminho[i+1]][0] <= 0:
                 if i > 1 and self.caminho[i] != 26:

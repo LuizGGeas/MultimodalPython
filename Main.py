@@ -1,7 +1,8 @@
 from Aresta import aresta
 from Transportes import Transportes as tr
 from Grafo import Grafo
-import numpy as np
+from Caminho import Caminho as c
+from Genetico import Genetico as g
 
 arestas = []
 
@@ -49,10 +50,20 @@ arestas.append(aresta(21,19,16,tr(4)))
 
 gr = Grafo(27, arestas)
 
+f = open('matrix.txt', 'w')
 
-f = open('matrix.txt','w')
-for line in gr.grafo:
-    for i in line:
-        f.write(f'{i} ')
+
+for i in gr.grafo:
+    for j in i:
+        f.write(f'{j} ')
     f.write('\n')
 f.close()
+
+path = c(grafo = gr.grafo).caminho
+
+gen = g.mutacao(path, gr.grafo)
+
+gen = []
+
+for i in range(100):
+    gen.append(c(grafo=gr.grafo))
