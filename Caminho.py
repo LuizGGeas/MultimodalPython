@@ -44,39 +44,6 @@ class Caminho:
                 else:
                     if self.trocas[i-1] == self.trocas[i+1]:
                         self.numtrocas-=1
-
-    def cruzamento(self, c2: Caminho, grafo: gr.grafo):
-        aux = [i for i in self.caminho if i in c2]
-
-        i = random.choice(aux)
-        j = i
-
-        while(j == i):
-            j = random.choice(aux)
-        novo = []
-        if len(aux) > 1:
-            novo = self.caminho[0:i]+c2.caminho[i:j]+self.caminho[j:]
-        elif len(aux) == 1:
-            novo = self.caminho[0:i]+ c2.caminho[i:]
-        else:
-            if self.fitness >= c2.fitness:
-                novo = c2
-            else:
-                novo = self
-        n = Caminho(grafo, novo)
-        return n
-
-    def mutacao(self, grafo:gr.grafo):
-        print(self.caminho)
-        aux = random.choice(self.caminho) 
-        poss = []
-        while not poss:
-            poss = [i for i in range(len(grafo)) if grafo[aux][i].value > 0 and i not in self.caminho]
-            if not poss:
-                aux = random.choice(self.caminho)
-
-        i = random.choice(poss)
-        self.caminho[self.caminho.index(aux)] = i
     
     def validacao(self, grafo: gr.grafo, end:int) -> bool :
         for i in len(self.caminho)-1:

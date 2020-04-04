@@ -63,6 +63,7 @@ path = c(grafo = gr.grafo).caminho
 
 gen = g.mutacao(path, gr.grafo)
 
-gen = c(gr.grafo, gen)
+gen = []
 
-print(gen.caminho)
+for i in range(100):
+    gen.append(c(grafo=gr.grafo))
