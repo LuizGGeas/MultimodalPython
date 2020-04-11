@@ -58,3 +58,7 @@ class Caminho:
                 if i == 1 and self.caminho[i] == end:
                     return False
         return True
+
+    @property
+    def getCaminho(self):
+        return self.caminho

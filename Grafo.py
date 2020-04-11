@@ -20,10 +20,7 @@ class Grafo:
 
         for i in arestas:
             grafo[i.v1][i.v2].value, grafo[i.v1][i.v2].transp = i.value, i.transp
-            ob = arestas[arestas.index(i)-1] 
-            print(i)
-            print(ob)
-            print(grafo[i.v1][i.v2].value is grafo[ob.v1][ob.v2].value)        
+
         self.grafo = grafo
 
     def getGrafo(self):

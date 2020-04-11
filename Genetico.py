@@ -25,7 +25,7 @@ class Genetico:
 				todo.append(random.choice(caminhos))
 			
 			for i in todo:
-				i.mutacao(grafo)
+				self.mutacao(i, grafo)
 			
 			for i in todo:
 				if i not in caminhos:
@@ -73,6 +73,3 @@ class Genetico:
 
 		i = random.choice(poss)
 		c1.caminho[c1.caminho.index(aux)] = i
-
-
-	
